@@ -10,9 +10,12 @@ public class CapsuleEntityBaker : Baker<CapsuleEntityAuthoring>
 {
     public override void Bake(CapsuleEntityAuthoring authoring)
     {
-        AddComponent(new MoveSpeedComponentData()
+        var entity = GetEntity(TransformUsageFlags.Dynamic);
+        AddComponent(entity, new MoveSpeedData()
         {
             MoveSpeed = authoring.MoveSpeed
         });
+
+        AddComponent<CapsuleTag>(entity);
     }
 }
